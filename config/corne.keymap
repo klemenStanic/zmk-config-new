@@ -90,7 +90,7 @@
             bindings = <
 &trans  &kp F1        &kp F2        &kp F3        &kp F4                        &kp F5                          &kp F6              &kp F7         &kp F8     &kp F9               &kp F10         &trans
 &trans  &kp C_PREV    &kp C_NEXT    &kp C_VOL_DN  &kp C_VOL_UP                  &kp C_PP                        &kp LEFT            &kp DOWN       &kp UP     &kp RIGHT            &trans          &kp LC(LG(Q))
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &gaming_hold_bt4 3 BT_SEL 3   &btclr_hold_bt5 BT_CLR BT_SEL 4 &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PG_UP  &kp LG(RIGHT_ARROW)  &trans          &kp LG(GRAVE)
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &gaming_hold_bt4 3 3   &btclr_hold_bt5 BT_CLR 4 &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PG_UP  &kp LG(RIGHT_ARROW)  &trans          &kp LG(GRAVE)
                                     &trans        &trans                        &trans                          &trans              &trans         &trans
             >;
         };
