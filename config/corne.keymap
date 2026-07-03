@@ -20,14 +20,17 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        btclr_hold_bt5: btclr_hold_bt5 {
+        // Hold 2s to fire a &bt command; tap does nothing. A hold-tap can
+        // only pass one parameter through, so use the *_CMD macros from
+        // dt-bindings/zmk/bt.h, e.g. `&btclr_hold BT_CLR_CMD 0`.
+        btclr_hold: btclr_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "BTCLR_HOLD_BT5";
+            label = "BTCLR_HOLD";
             #binding-cells = <2>;
             tapping-term-ms = <2000>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
-            bindings = <&bt>, <&bt>;
+            bindings = <&bt>, <&none>;
         };
 
         gaming_hold_bt4: gaming_hold_bt4 {
@@ -84,13 +87,13 @@
             // -----------------------------------------------------------------------------------------
             // |       |  F1  |  F2  |  F3  |  F4  |  F5 |            |  F6  |  F7  |  F8  |  F9  |  F10  |   |
             // |       | Prev | Next | Vol - | Vol + | Play/Pause |   |      | LFT | DWN |  UP | RGT |     |     |
-            // | SHFT  | BT1  | BT2  | BT3  | BT4 (hold 2s: gaming)  | BT5 (hold 2s: clear) |   |      |     |     |     |     | Cmd+` |
+            // | SHFT  | BT1  | BT2  | BT3  | BT4  | BT5 |   | Cmd+← | PgDn | PgUp | Cmd+→ | BTCLR (hold 2s) | Cmd+` |
             //                    |     |     |    |                  |     |     |     |
 
             bindings = <
 &trans  &kp F1        &kp F2        &kp F3        &kp F4                        &kp F5                          &kp F6              &kp F7         &kp F8     &kp F9               &kp F10         &trans
 &trans  &kp C_PREV    &kp C_NEXT    &kp C_VOL_DN  &kp C_VOL_UP                  &kp C_PP                        &kp LEFT            &kp DOWN       &kp UP     &kp RIGHT            &trans          &kp LC(LG(Q))
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PG_UP  &kp LG(RIGHT_ARROW)  &trans          &kp LG(GRAVE)
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PG_UP  &kp LG(RIGHT_ARROW)  &btclr_hold BT_CLR_CMD 0  &kp LG(GRAVE)
                                     &trans        &trans                        &trans                          &trans              &trans         &trans
             >;
         };
